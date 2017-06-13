@@ -142,7 +142,8 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
         }
 
        json.Unmarshal(valAsbytes, &zippr_coin_Obj)
-      
+     
+       fmt.Println("ZipprCoing: " + zippr_coing_Obj.ZipprCoins) 
        return ([]byte(float64ToByte(zippr_coin_Obj.ZipprCoins))), nil
 }
 
