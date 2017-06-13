@@ -107,6 +107,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 
   json.Unmarshal(stored_zippr_coins_Asbytes, &zippr_coin_Obj)
 
+  fmt.Println("Write Coing: + ", args[1])
 
   zippr_coin_addValue, err := strconv.ParseFloat(args[1], 64)
   if err != nil {
@@ -120,6 +121,8 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
   if err != nil {
    return nil, err
   }
+
+  fmt.Println("Write: added " + name + " with ZipprCoin: " + strconv.FormatFloat(zippr_coin_Obj.ZipprCoins, 'f', -1, 64))
   return nil, nil
 }
 
@@ -143,7 +146,7 @@ func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) 
 
        json.Unmarshal(valAsbytes, &zippr_coin_Obj)
      
-       fmt.Println("ZipprCoing: " + strconv.FormatFloat(zippr_coin_Obj.ZipprCoins, 'f', -1, 64)) 
+       fmt.Println("ZipprCoin: " + strconv.FormatFloat(zippr_coin_Obj.ZipprCoins, 'f', -1, 64)) 
        return ([]byte(float64ToByte(zippr_coin_Obj.ZipprCoins))), nil
 }
 
